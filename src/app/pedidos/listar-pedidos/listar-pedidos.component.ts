@@ -33,7 +33,10 @@ export class ListarPedidosComponent implements OnInit {
       { id: 1256733, dia: 2,mes: 9, ano: 2023, status: StatusPedido.ABERTO }
       //Testes de pedidos.
     ];
-    const tableBody = document.querySelector('tbody'); // seleção da tabela no HTML
+    
+
+
+  const tableBody = document.querySelector('tbody'); // seleção da tabela no HTML
 
   pedidos.forEach(pedido => {
     const row = this.renderer.createElement('tr');
@@ -48,7 +51,9 @@ export class ListarPedidosComponent implements OnInit {
     this.renderer.appendChild(dataCell, this.renderer.createText(String(dataFormatada)));
     
     // Bg color de acordo com o status do pedido.
-    this.renderer.setStyle(statusCell, 'background-color', pedido.status.color);
+    const StatusStyles = 'width:300px'
+    this.renderer.setAttribute(statusCell, 'style', StatusStyles);
+    this.renderer.setStyle(statusCell, 'background-color', pedido.status.color)
     this.renderer.appendChild(statusCell, this.renderer.createText(pedido.status.Status));
     // Estilização das células, centralização e negrito
     this.renderer.addClass(idCell, 'text-center');
